@@ -1,8 +1,17 @@
 language: ruby
 rvm:
-  - 2.3.0
+- 2.3.0
 addons:
-  postgresql: "9.4"
+  postgresql: '9.4'
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+deploy:
+  provider: heroku
+  api_key:
+    secure: b7yATWlrfS0Dkzd0vo5PaIgVdBG+cXc1GHnCbtN4x6I9phUNB8CNds25AwyW/tJ0u15jnKtQ4MvPXUU/Si3hoA1o40zx0t2nWgLfff7BPuoUcIXQ0dYybRDwEfXYRbEQ+yBR7xuHK6C62gYqEsA5kfbYCfoLQY8gZAdyEoOlCiZVmBYhrU7Ta4fGZUj+1i0w5vNk1U7nJySn+jBYaq5AwYOinf/7Ulzkjc1jD/NnOJpKKH5PIX+Drpt1ZcXbUMgu0AYfu/z1bpjw4TdjtvtXpFh+oj92iy7gCqryLnKcBH1Ny3CEzTsfeA9aXpR+TLsbroBsfL5K2eIdoewhYJBhHMz99A1VD/yzaELl/W1zAQnhEN03y2hlUgcERc6f2E4gwOiPf8nCJ2TAoZW3vJgZwrA5NU3BiNrvYta2v5uIGwxAS59i04biMAJ2sF/Al9HT+oqr+NfotS81YnrJLG2oRZHqBkdmR/T47kjmL4+AZtA+AIxe42DNfsNt127lYvubf7GeDLbqhjrrSTmezspCdKFG4c4LoYHWAe9C6e091hNr3ipX9gnNu+sC+OCjOcBx5rRatw5Fm1KLyJXmEvIM+ET4L65Ff/bp3MMSI/+9DYPFJFk1cTeqHgVCddzcZHQYZGtRtl9z6SHH3eSvovY49nm+Z2e7TJhl8JXcX8an8nc=
+  app: taco-stand
+  on:
+    repo: tiy-hou-q2-2016-rails/taco-stand
+  run:
+    - "rake db:migrate"
