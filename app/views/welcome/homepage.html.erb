@@ -1,0 +1,9 @@
+<h1>Welcome to TacoStand <small>Where we stand for tacos!</small></h1>
+
+<h2>Tacos</h2>
+
+<ul>
+  <% @tacos.each do |taco| %>
+    <li><%= taco.name %></li>
+  <% end %>
+</ul>
