@@ -2,6 +2,8 @@
 
 <h2>Tacos</h2>
 
+<%= link_to 'New Taco', new_taco_path %>
+
 <ul>
   <% @tacos.each do |taco| %>
     <li><%= link_to taco.name, taco_path(id: taco.id) %></li>
