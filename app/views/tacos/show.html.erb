@@ -1,0 +1,9 @@
+<h1><%= @taco.name %></h1>
+
+<dl class="">
+  <dt>Price</dt>
+  <dd><%= number_to_currency @taco.price %></dd>
+</dl>
+
+
+<%= image_tag @taco.photo_url %>

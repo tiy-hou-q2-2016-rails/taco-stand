@@ -4,6 +4,6 @@
 
 <ul>
   <% @tacos.each do |taco| %>
-    <li><%= taco.name %></li>
+    <li><%= link_to taco.name, taco_path(id: taco.id) %></li>
   <% end %>
 </ul>
