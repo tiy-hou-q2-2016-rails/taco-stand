@@ -1,0 +1,19 @@
+You are on the sessions/new page
+
+<%= form_tag do %>
+
+  <div class="">
+    <%= label_tag :username %>
+    <%= text_field_tag :username %>
+  </div>
+
+  <div class="">
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+
+  <div class="">
+    <%= submit_tag "Sign In" %>
+  </div>
+
+<% end %>

@@ -30,6 +30,7 @@ class CreateUpdateAndDeleteTacosTest < Capybara::Rails::TestCase
   end
 
   test "Creating Taco" do
+    sign_in_user
 
     visit root_path
     click_link "New Taco"
@@ -45,6 +46,8 @@ class CreateUpdateAndDeleteTacosTest < Capybara::Rails::TestCase
   end
 
   test "Can update a taco" do
+    sign_in_user
+
     visit root_path
     click_link "Al Pastor"
     # on detail page
@@ -63,8 +66,9 @@ class CreateUpdateAndDeleteTacosTest < Capybara::Rails::TestCase
 
   end
 
-
   test "Can Delete a Taco" do
+    sign_in_user
+
     visit root_path
     click_link "Al Pastor"
     # on detail page
@@ -84,5 +88,12 @@ class CreateUpdateAndDeleteTacosTest < Capybara::Rails::TestCase
 
   end
 
+  def sign_in_user
+    visit root_path
+    click_link "New Taco"
+    fill_in "Username", with: "jwo"
+    fill_in "Password", with: "12345678"
+    click_button "Sign In"
+  end
 
 end
