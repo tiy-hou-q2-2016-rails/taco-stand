@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   post 'tacos' => 'tacos#create'
   get 'tacos/new' => 'tacos#new', as: :new_taco
   get 'tacos/:id' => 'tacos#show', as: :taco
+  get 'tacos/:id/edit' => 'tacos#edit', as: :edit_taco
   delete 'tacos/:id' => 'tacos#delete'
+  patch 'tacos/:id' => 'tacos#update'
 end

@@ -5,6 +5,8 @@
   <dd><%= number_to_currency @taco.price %></dd>
 </dl>
 
+<%= link_to "Update Taco", edit_taco_path(id: @taco.id) %>
+
 <%= link_to "Delete Taco", taco_path(id: @taco.id), method: :delete %>
 
 
