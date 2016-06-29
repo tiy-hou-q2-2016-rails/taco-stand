@@ -18,4 +18,10 @@ class TacosController < ApplicationController
       render :new
     end
   end
+
+  def delete
+    @taco = Taco.find_by id: params[:id]
+    @taco.destroy
+    redirect_to root_path, notice: "Taco Obliterated!"
+  end
 end
