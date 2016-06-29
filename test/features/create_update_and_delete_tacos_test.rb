@@ -8,6 +8,8 @@ class CreateUpdateAndDeleteTacosTest < Capybara::Rails::TestCase
     Taco.create! name: "Fish Tacos", price: 6.50, photo_url: "http://www.thenovicechefblog.com/wp-content/uploads/2010/07/DSC_7383-1024x801.jpg"
     Taco.create! name: "Beef Fajitas", price: 5.56, photo_url: "http://grouchymuffin.com/wp-content/uploads/2013/05/lupe-tortillas-fajitas.jpg"
     Taco.create! name: "Carnitas", price: 6.50, photo_url: "http://carnitassnackshack.com/wp-content/themes/carnitassnacks/images/home/home-carnitas-tacos.jpg"
+
+    User.create! username: "jwo", password: "12345678"
   end
 
   test "Can view detail" do
