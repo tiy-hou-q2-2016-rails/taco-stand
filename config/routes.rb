@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   get 'tacos/:id/edit' => 'tacos#edit', as: :edit_taco
   delete 'tacos/:id' => 'tacos#delete'
   patch 'tacos/:id' => 'tacos#update'
+
+  get 'sign_in' => 'sessions#new', as: :sign_in
+  post 'sign_in' => 'sessions#create'
 end

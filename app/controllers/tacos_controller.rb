@@ -1,4 +1,11 @@
 class TacosController < ApplicationController
+
+  before_action except: :show do
+    if session[:username].nil?
+      redirect_to sign_in_path, notice: "SIGN IN YO"
+    end
+  end
+
   def show
     @taco = Taco.find_by id: params[:id]
   end
