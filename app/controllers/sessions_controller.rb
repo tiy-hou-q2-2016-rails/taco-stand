@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     password = params[:password]
 
     user = User.find_by username: params[:username]
-    if user && user.password == params[:password]
+    if user && user.authenticate(params[:password])
       # make session[:username] present
       session[:username] = username
       redirect_to root_path, notice: "Signed in!"
