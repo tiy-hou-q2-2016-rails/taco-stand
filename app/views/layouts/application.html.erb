@@ -8,6 +8,11 @@
 </head>
 <body>
 
+  <header>
+    <%= link_to 'Home', root_path %>
+    <%= link_to 'Sign Out', sign_in_path, method: :delete %>
+  </header>
+
   <% if notice %>
     <p>
       <%= notice %>

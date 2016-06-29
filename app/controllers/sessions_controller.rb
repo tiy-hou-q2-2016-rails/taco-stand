@@ -8,13 +8,22 @@ class SessionsController < ApplicationController
     username = params[:username]
     password = params[:password]
 
-    # if username is jwo and password is 12345678
-    if (username == "jwo") && (password == "12345678")
+    user = User.find_by username: params[:username]
+    if user && user.authenticate(params[:password])
       # make session[:username] present
       session[:username] = username
       redirect_to root_path, notice: "Signed in!"
     else
+      flash.now[:notice] = "Something is wrong with your username and/or password"
       render :new
     end
+  end
+
+  def delete
+    # we should sign out
+    # make future tests if we are signed in fail
+    # session[:username] = nil
+    session.delete :username
+    redirect_to root_path, notice: "Signed Out!"
   end
 end
