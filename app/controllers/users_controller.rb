@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user.password_confirmation = params[:user][:password_confirmation]
     if @user.save
       # we should also sign them in
-      session[:username] = @user.username
+      session[:user_id] = @user.id
       redirect_to root_path, notice: "Welcome!"
     else
       render :new

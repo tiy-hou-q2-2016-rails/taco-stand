@@ -3,6 +3,8 @@
 <dl class="">
   <dt>Price</dt>
   <dd><%= number_to_currency @taco.price %></dd>
+  <dt>User</dt>
+  <dd><%= @taco.user.username %></dd>
 </dl>
 
 <%= link_to "Update Taco", edit_taco_path(id: @taco.id) %>

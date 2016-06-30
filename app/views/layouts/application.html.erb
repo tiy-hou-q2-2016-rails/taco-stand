@@ -10,8 +10,16 @@
 
   <header>
     <%= link_to 'Home', root_path %>
-    
-    <%= link_to 'Sign Out', sign_in_path, method: :delete %>
+
+
+    <% if @current_user %>
+      <%= link_to 'Sign Out', sign_in_path, method: :delete %>
+
+      Hi <%= @current_user.username %>. You have <%= @current_user.tacos.count %> tacos.
+    <% else %>
+      <%= link_to 'Sign In', sign_in_path %>
+
+    <% end %>
   </header>
 
   <% if notice %>
