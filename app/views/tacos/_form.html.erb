@@ -1,3 +1,11 @@
+<% if @taco.errors.any? %>
+  <ul class="errors">
+    <% @taco.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_for @taco do |f| %>
   <div class="">
     <%= f.label :name %>

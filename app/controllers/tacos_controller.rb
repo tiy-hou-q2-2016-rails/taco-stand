@@ -15,10 +15,13 @@ class TacosController < ApplicationController
   end
 
   def create
+    user = User.find_by username: session[:username]
     @taco = Taco.new
     @taco.name = params[:taco][:name]
     @taco.price = params[:taco][:price]
     @taco.photo_url = params[:taco][:photo_url]
+    @taco.user = user
+
     if @taco.save
       redirect_to root_path, notice: "Taco Created!"
     else
