@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>TacoStand</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>TacoStand</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <%= link_to 'Home', root_path %>
+        <%= link_to 'All Users', users_path %>
+        <%= link_to 'People You Follow', following_path %>
+        <%= link_to 'Feed', feed_path %>
 
-  <header>
-    <%= link_to 'Home', root_path %>
-    <%= link_to 'All Users', users_path %>
-    <%= link_to 'People You Follow', following_path %>
-    <%= link_to 'Feed', feed_path %>
+      <% if @current_user %>
+        Hi
+        <%= @current_user.username %>. You have
+        <%= @current_user.tacos.count %>
+        tacos.
+        <%= link_to 'Sign Out', sign_in_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Sign In', sign_in_path %>
 
+        <% end %>
+      </header>
 
-    <% if @current_user %>
-      <%= link_to 'Sign Out', sign_in_path, method: :delete %>
+      <% if notice %>
+        <div class="alert alert-info" role="alert">
+          <%= notice %>
+        </div>
+      <% end %>
 
-      Hi <%= @current_user.username %>. You have <%= @current_user.tacos.count %> tacos.
-    <% else %>
-      <%= link_to 'Sign In', sign_in_path %>
+      <% if alert %>
+        <div class="alert alert-danger" role="alert">
+          <%= alert %>
+        </div>
+      <% end %>
 
-    <% end %>
-  </header>
+      <%= yield %>
+    </div>
 
-  <% if notice %>
-    <p>
-      <%= notice %>
-    </p>
-  <% end %>
-
-<%= yield %>
-
-</body>
+  </body>
 </html>

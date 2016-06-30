@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem "minitest-rails"
 gem 'bcrypt'
+gem 'bootstrap-sass'
 gem "acts_as_follower"
 
 group :development, :test do

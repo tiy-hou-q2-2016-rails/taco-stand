@@ -1,28 +1,31 @@
 <% if @taco.errors.any? %>
-  <ul class="errors">
+  <div class="alert alert-danger" role="alert">
     <% @taco.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+      <%= msg %><br>
     <% end %>
-  </ul>
+  </div>
 <% end %>
+
+<div class="well">
 
 <%= form_for @taco do |f| %>
-  <div class="">
+  <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="">
+  <div class="form-group">
     <%= f.label :price %>
-    <%= f.text_field :price %>
+    <%= f.text_field :price, class: "form-control" %>
   </div>
 
-  <div class="">
+  <div class="form-group">
     <%= f.label :photo_url %>
-    <%= f.text_field :photo_url %>
+    <%= f.text_field :photo_url, class: "form-control" %>
   </div>
 
-  <div class="">
-    <%= f.submit %>
+  <div class="form-group">
+    <%= f.submit class: "btn btn-lg btn-primary"%>
   </div>
 <% end %>
+</div>

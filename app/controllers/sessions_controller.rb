@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path, notice: "Signed in!"
     else
-      flash.now[:notice] = "Something is wrong with your username and/or password"
+      flash.now[:alert] = "Something is wrong with your username and/or password"
       render :new
     end
   end

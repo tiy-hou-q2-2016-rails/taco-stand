@@ -1,11 +1,23 @@
-<h1>Welcome to TacoStand <small>Where we stand for tacos!</small></h1>
+<div class="page-header">
+  <h1>Welcome to TacoStand <small>Where we stand for tacos!</small></h1>
+</div>
 
-<h2>Tacos</h2>
+  <h2>Tacos</h2>
+  <p class="text-right">
+    <%= link_to 'New Taco', new_taco_path, class: "text-right btn btn-default" %>
+  </p>
 
-<%= link_to 'New Taco', new_taco_path %>
 
-<ul>
   <% @tacos.each do |taco| %>
-    <li><%= link_to taco.name, taco_path(id: taco.id) %></li>
+    <div class="col-xs-4">
+      <%= link_to taco_path(id: taco.id) do %>
+        <div class="thumbnail">
+          <%= image_tag taco.photo_url, class: "taco-thumb" %>
+          <div class="caption">
+            <%= taco.name %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
   <% end %>
-</ul>
