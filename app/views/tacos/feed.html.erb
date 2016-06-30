@@ -1,0 +1,8 @@
+<div class="list-group">
+  <% @tacos.each do |taco| %>
+    <div class="list-group-item">
+      <%= link_to taco.name, taco_path(id: taco.id) %> - By <%= taco.user.username %>
+    </div>
+  <% end %>
+
+</div>

@@ -6,6 +6,10 @@ class TacosController < ApplicationController
     end
   end
 
+  def feed
+    @tacos = @current_user.timeline
+  end
+
   def show
     @taco = Taco.find_by id: params[:id]
   end
