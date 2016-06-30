@@ -1,21 +1,27 @@
-<h1>Sign In! It's great!</h1>
+<div class="page-header">
+  <h1>Sign In! It's great!</h1>
+</div>
+
+<div class="well">
 
 <%= form_tag do %>
 
-  <div class="">
+  <div class="form-group">
     <%= label_tag :username %>
-    <%= text_field_tag :username %>
+    <%= text_field_tag :username, params[:username], class: "form-control" %>
   </div>
 
-  <div class="">
+  <div class="form-group">
     <%= label_tag :password %>
-    <%= password_field_tag :password %>
+    <%= password_field_tag :password, "", class: "form-control" %>
   </div>
 
-  <div class="">
-    <%= submit_tag "Sign In" %>
+  <div class="form-group">
+    <%= submit_tag "Sign In", class: "btn btn-lg btn-primary"%>
     or
     <%= link_to 'Sign Up', new_user_path %>
   </div>
 
 <% end %>
+
+</div>
