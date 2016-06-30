@@ -1,15 +1,25 @@
-<h1><%= @taco.name %></h1>
+<div class="page-header">
+  <h1><%= @taco.name %></h1>
+</div>
 
-<dl class="">
-  <dt>Price</dt>
-  <dd><%= number_to_currency @taco.price %></dd>
-  <dt>User</dt>
-  <dd><%= @taco.user.username %></dd>
-</dl>
+<div class="row">
+  <div class="col-xs-4">
+    <dt>Price</dt>
+    <dd><%= number_to_currency @taco.price %></dd>
+  </div>
+  <div class="col-xs-4">
+    <dt>User</dt>
+    <dd><%= @taco.user.username %></dd>
+  </div>
+  <div class="col-xs-4">
+    <%= link_to "Update Taco", edit_taco_path(id: @taco.id), class: 'btn btn-default' %>
 
-<%= link_to "Update Taco", edit_taco_path(id: @taco.id) %>
+    <%= link_to "Delete Taco", taco_path(id: @taco.id), method: :delete, class: "btn btn-danger" %>
+  </div>
+</div>
 
-<%= link_to "Delete Taco", taco_path(id: @taco.id), method: :delete %>
+
+
 
 
 <%= image_tag @taco.photo_url %>

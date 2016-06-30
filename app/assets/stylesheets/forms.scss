@@ -1,0 +1,12 @@
+$redtext: #a94442;
+$redborder: #ebccd1;
+
+.field_with_errors {
+  label {
+    color: $redtext;
+    font-weight: bold;
+  }
+  input {
+    border: 5px solid $redborder;
+  }
+}

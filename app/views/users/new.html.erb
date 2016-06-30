@@ -1,33 +1,39 @@
-<h1>Hi! Sign Up!</h1>
+<div class="page-header">
+  <h1>Hi! Sign Up!</h1>
+</div>
 
 <% if @user.errors.any? %>
-  <div class="errors">
+  <div class="alert alert-danger" role="alert">
     <% @user.errors.full_messages.each do |msg| %>
-      <p>
-        <%= msg %>
-      </p>
+      <%= msg %><br>
     <% end %>
   </div>
 <% end %>
 
+<div class="well">
+
+
 <%= form_for @user, url: create_user_path do |f| %>
-  <div class="">
+  <div class="form-group">
     <%= f.label :username %>
-    <%= f.text_field :username %>
+    <%= f.text_field :username, class: "form-control" %>
   </div>
 
-  <div class="">
+  <div class="form-group">
     <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, class: "form-control" %>
   </div>
 
-  <div class="">
+  <div class="form-group">
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
   </div>
 
-  <div class="">
-    <%= f.submit %>
+  <div class="form-group">
+    <%= f.submit class: "btn btn-lg btn-primary" %>
   </div>
 
 <% end %>
+
+
+</div>
