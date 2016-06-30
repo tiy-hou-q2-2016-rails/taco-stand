@@ -10,14 +10,16 @@
     <div class="container">
       <header>
         <%= link_to 'Home', root_path %>
+        <%= link_to 'All Users', users_path %>
+        <%= link_to 'People You Follow', following_path %>
+        <%= link_to 'Feed', feed_path %>
 
-        <% if @current_user %>
-        <%= link_to 'Sign Out', sign_in_path, method: :delete %>
-
+      <% if @current_user %>
         Hi
         <%= @current_user.username %>. You have
         <%= @current_user.tacos.count %>
         tacos.
+        <%= link_to 'Sign Out', sign_in_path, method: :delete %>
       <% else %>
         <%= link_to 'Sign In', sign_in_path %>
 

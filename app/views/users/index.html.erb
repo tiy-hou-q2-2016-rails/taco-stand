@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h1>All Users</h1>
+</div>
+
+<div class="list-group">
+  <% @users.each do |user| %>
+    <div class="list-group-item">
+      <%= user.username %> -
+        <% if @current_user.following?(user) %>
+          <%= link_to "Ghost #{user.username}", unfollow_path(user_id: user.id), method: :post, class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to "Follow #{user.username}", follow_path(user_id: user.id), method: :post, class: "btn btn-primary" %>
+        <% end %>
+    </div>
+  <% end %>
+
+</div>
