@@ -1,7 +1,7 @@
 class TacosController < ApplicationController
 
   before_action except: :show do
-    if session[:username].nil?
+    if @current_user.nil?
       redirect_to sign_in_path, notice: "SIGN IN YO"
     end
   end
@@ -15,12 +15,11 @@ class TacosController < ApplicationController
   end
 
   def create
-    user = User.find_by username: session[:username]
     @taco = Taco.new
     @taco.name = params[:taco][:name]
     @taco.price = params[:taco][:price]
     @taco.photo_url = params[:taco][:photo_url]
-    @taco.user = user
+    @taco.user = @current_user
 
     if @taco.save
       redirect_to root_path, notice: "Taco Created!"
