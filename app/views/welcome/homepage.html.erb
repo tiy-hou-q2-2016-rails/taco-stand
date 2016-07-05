@@ -7,6 +7,50 @@
     <%= link_to 'New Taco', new_taco_path, class: "text-right btn btn-default" %>
   </p>
 
+  <%= form_tag root_path, method: :get, class: "well" do %>
+
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="form-group">
+          <%= label_tag :query, "Search for: "%>
+          <%= text_field_tag :query, params[:query], class: 'form-control', placeholder: "Search Text"%>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="form-group">
+          <%= label_tag :price_min, "Minimum Price"%>
+          <%= select_tag :price_min,  options_for_select(0..20), prompt: "Please select a minimum Price", class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="form-group">
+          <%= label_tag :price_max, "Maximum Price"%>
+          <%= select_tag :price_max,  options_for_select(0..20), prompt: "Please select a maximum Price", class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="form-group">
+          <br>
+          <%= submit_tag "Search", class: "btn btn-default btn-block btn-lg" %>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+  <% end %>
+
+  <% if @tacos.empty? %>
+  <div class="alert alert-info">
+    No Tacos Found
+  </div>
+  <% end %>
+
 
   <% @tacos.each do |taco| %>
     <div class="col-xs-4">
@@ -14,7 +58,7 @@
         <div class="thumbnail">
           <%= image_tag taco.photo_url, class: "taco-thumb" %>
           <div class="caption">
-            <%= taco.name %>
+            <%= taco.name %> - <%= number_to_currency taco.price %>
           </div>
         </div>
       <% end %>
