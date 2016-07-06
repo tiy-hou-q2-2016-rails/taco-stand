@@ -42,3 +42,17 @@ Taco Stand
     }
 }
 ```
+
+
+### Create a Taco
+
+
+POST `/api/tacos`
+
+params = {
+  taco: {
+    name: "",
+    price: "",
+    photo_url: ""
+  }
+}
