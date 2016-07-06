@@ -22,4 +22,10 @@ Rails.application.routes.draw do
   post 'unfollow/:user_id' => 'users#unfollow', as: :unfollow
 
   get 'feed' => 'tacos#feed', as: :feed
+
+
+  get 'api/tacos' => 'api/tacos#index', as: :api_tacos
+  get 'api/tacos/:id' => 'api/tacos#show', as: :api_taco
+
+
 end
