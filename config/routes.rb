@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  use_doorkeeper
   root 'welcome#homepage'
 
   get 'tacos' => 'welcome#homepage', as: :tacos
@@ -28,5 +29,6 @@ Rails.application.routes.draw do
   get 'api/tacos/:id' => 'api/tacos#show', as: :api_taco
   post 'api/tacos' => 'api/tacos#create'
   delete 'api/tacos/:id' => 'api/tacos#delete'
+  post 'api/registration' => 'api/registration#create'
 
 end

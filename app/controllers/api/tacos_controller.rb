@@ -1,4 +1,5 @@
 class Api::TacosController < ApplicationController
+  before_action :doorkeeper_authorize!
 
   before_action do
     request.format = :json
@@ -25,7 +26,7 @@ class Api::TacosController < ApplicationController
     @taco.name = params[:taco][:name]
     @taco.price = params[:taco][:price]
     @taco.photo_url = params[:taco][:photo_url]
-    @taco.user = User.first # for now, until we can authenticate
+    @taco.user = current_user
     if @taco.save
       render :show, status: 201 #created
     else
@@ -37,5 +38,12 @@ class Api::TacosController < ApplicationController
     @taco = Taco.find_by id: params[:id]
     @taco.destroy
     render json: {ok: true}, status: 200
+  end
+
+
+  def current_user
+    if doorkeeper_token
+      User.find_by id: doorkeeper_token.resource_owner_id
+    end
   end
 end
