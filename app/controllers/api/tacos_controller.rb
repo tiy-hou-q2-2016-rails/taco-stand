@@ -33,7 +33,7 @@ class Api::TacosController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @taco = Taco.find_by id: params[:id]
     @taco.destroy
     render json: {ok: true}, status: 200

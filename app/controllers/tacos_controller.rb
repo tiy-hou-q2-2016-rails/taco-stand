@@ -49,7 +49,7 @@ class TacosController < ApplicationController
 
   end
 
-  def delete
+  def destroy
     @taco = Taco.find_by id: params[:id]
     @taco.destroy
     redirect_to root_path, notice: "Taco Obliterated!"
