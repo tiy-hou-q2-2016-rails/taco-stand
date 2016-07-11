@@ -9,14 +9,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new
-    @user.username = params[:user][:username]
-    @user.password = params[:user][:password]
-    @user.password_confirmation = params[:user][:password_confirmation]
+    @user = User.new user_params
     if @user.save
       # we should also sign them in
       session[:user_id] = @user.id
-      redirect_to root_path, notice: "Welcome!"
+      redirect_to root_path, notice: "Signed in! Welcome!"
     else
       render :new
     end
@@ -37,5 +34,9 @@ class UsersController < ApplicationController
     user = User.find_by! id: params[:user_id]
     @current_user.stop_following(user)
     redirect_to users_path, notice: "👻👻"
+  end
+
+  def user_params
+    params.require(:user).permit(:username, :password, :password_confirmation)
   end
 end

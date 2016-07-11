@@ -46,4 +46,19 @@ class CanSigninAndSignOutTest < Capybara::Rails::TestCase
 
   end
 
+  test "Can Sign Up" do
+
+    visit root_path
+    click_link "Sign In"
+    click_link "Sign Up"
+    fill_in "Username", with: 'bob'
+    fill_in "Password", with: "12345678"
+    fill_in "Password confirmation", with: "12345678"
+    click_button "Sign Up"
+
+    assert User.find_by(username: 'bob').authenticate("12345678")
+    assert_content page, "Signed in!"
+
+  end
+
 end
