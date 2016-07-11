@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(version: 20160711154254) do
 
   create_table "menus", force: :cascade do |t|
     t.string   "name"
-    t.string   "pdf_file"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "pdf_file_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
