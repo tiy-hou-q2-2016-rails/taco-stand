@@ -21,10 +21,7 @@ class Api::TacosController < ApplicationController
   end
 
   def create
-    @taco = Taco.new
-    @taco.name = params[:taco][:name]
-    @taco.price = params[:taco][:price]
-    @taco.photo_url = params[:taco][:photo_url]
+    @taco = Taco.new taco_params
     @taco.user = User.first # for now, until we can authenticate
     if @taco.save
       render :show, status: 201 #created
@@ -37,5 +34,9 @@ class Api::TacosController < ApplicationController
     @taco = Taco.find_by id: params[:id]
     @taco.destroy
     render json: {ok: true}, status: 200
+  end
+
+  def taco_params
+    params.require(:taco).permit(:name, :price, :photo_url)
   end
 end

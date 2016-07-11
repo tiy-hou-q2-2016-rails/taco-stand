@@ -19,10 +19,7 @@ class TacosController < ApplicationController
   end
 
   def create
-    @taco = Taco.new
-    @taco.name = params[:taco][:name]
-    @taco.price = params[:taco][:price]
-    @taco.photo_url = params[:taco][:photo_url]
+    @taco = Taco.new taco_params
     @taco.user = @current_user
 
     if @taco.save
@@ -38,10 +35,7 @@ class TacosController < ApplicationController
 
   def update
     @taco = Taco.find_by id: params[:id]
-    @taco.name = params[:taco][:name]
-    @taco.price = params[:taco][:price]
-    @taco.photo_url = params[:taco][:photo_url]
-    if @taco.save
+    if @taco.update taco_params
       redirect_to root_path, notice: "Taco Updated!"
     else
       render :edit
@@ -53,5 +47,9 @@ class TacosController < ApplicationController
     @taco = Taco.find_by id: params[:id]
     @taco.destroy
     redirect_to root_path, notice: "Taco Obliterated!"
+  end
+
+  def taco_params
+    params.require(:taco).permit(:name, :price, :photo_url)
   end
 end
