@@ -53,10 +53,10 @@
 
 
   <% @tacos.each do |taco| %>
-    <div class="col-xs-4">
+    <div class="col-sm-4">
       <%= link_to taco_path(id: taco.id) do %>
         <div class="thumbnail">
-          <%= image_tag taco.photo_url, class: "taco-thumb" %>
+          <%= image_tag attachment_url(taco, :photo, :fill, 500, 250), class: "taco-thumb" %>
           <div class="caption">
             <%= taco.name %> - <%= number_to_currency taco.price %>
           </div>

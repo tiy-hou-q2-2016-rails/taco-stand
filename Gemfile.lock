@@ -89,6 +89,7 @@ GEM
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
     mime-types (2.99.2)
+    mini_magick (4.5.1)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     minitest-capybara (0.8.2)
@@ -148,6 +149,9 @@ GEM
       mime-types
       rest-client (~> 1.8)
       sinatra (~> 1.4.5)
+    refile-mini_magick (0.2.0)
+      mini_magick (~> 4.0)
+      refile (~> 0.5)
     refile-postgres (1.4.0)
       pg
       refile (~> 0.6.2)
@@ -214,6 +218,7 @@ DEPENDENCIES
   pg (~> 0.15)
   rails (= 4.2.6)
   refile
+  refile-mini_magick
   refile-postgres (~> 1.4)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

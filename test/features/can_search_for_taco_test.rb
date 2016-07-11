@@ -4,10 +4,10 @@ class CanSearchForTacoTest < Capybara::Rails::TestCase
   setup do
     the_user = User.create! username: "jwo", password: "12345678"
 
-    Taco.create! user: the_user, name: "Al Pastor", price: 5.65, photo_url: "http://www.seriouseats.com/recipes/20120501-204377-tacos-al-pastor-step-8.jpg"
-    Taco.create! user: the_user, name: "Fish Tacos", price: 6.50, photo_url: "http://www.thenovicechefblog.com/wp-content/uploads/2010/07/DSC_7383-1024x801.jpg"
-    Taco.create! user: the_user, name: "Beef Fajitas", price: 5.56, photo_url: "http://grouchymuffin.com/wp-content/uploads/2013/05/lupe-tortillas-fajitas.jpg"
-    Taco.create! user: the_user, name: "Carnitas", price: 2.50, photo_url: "http://carnitassnackshack.com/wp-content/themes/carnitassnacks/images/home/home-carnitas-tacos.jpg"
+    Taco.create! user: the_user, name: "Al Pastor", price: 5.65, remote_photo_url: "http://www.seriouseats.com/recipes/20120501-204377-tacos-al-pastor-step-8.jpg"
+    Taco.create! user: the_user, name: "Fish Tacos", price: 6.50, remote_photo_url: "http://www.thenovicechefblog.com/wp-content/uploads/2010/07/DSC_7383-1024x801.jpg"
+    Taco.create! user: the_user, name: "Beef Fajitas", price: 5.56, remote_photo_url: "http://grouchymuffin.com/wp-content/uploads/2013/05/lupe-tortillas-fajitas.jpg"
+    Taco.create! user: the_user, name: "Carnitas", price: 2.50, remote_photo_url: "http://carnitassnackshack.com/wp-content/themes/carnitassnacks/images/home/home-carnitas-tacos.jpg"
 
   end
 

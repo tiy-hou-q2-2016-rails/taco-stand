@@ -250,11 +250,11 @@ CREATE TABLE schema_migrations (
 CREATE TABLE tacos (
     id integer NOT NULL,
     name character varying,
-    photo_url character varying,
     price numeric,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    user_id integer
+    user_id integer,
+    photo_id character varying
 );
 
 
@@ -522,4 +522,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160707191823');
 INSERT INTO schema_migrations (version) VALUES ('20160711154254');
 
 INSERT INTO schema_migrations (version) VALUES ('20160711164656');
+
+INSERT INTO schema_migrations (version) VALUES ('20160711165932');
 

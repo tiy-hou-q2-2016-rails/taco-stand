@@ -19,7 +19,6 @@
 </div>
 
 
-
-
-
-<%= image_tag @taco.photo_url %>
+<%= link_to attachment_url(@taco, :photo, format: "jpg") do %>
+  <%= image_tag attachment_url(@taco, :photo, :fill, 500, 500) %>
+<% end %>
