@@ -22,7 +22,7 @@ class TacosController < ApplicationController
     @taco = Taco.new
     @taco.name = params[:taco][:name]
     @taco.price = params[:taco][:price]
-    @taco.photo_url = params[:taco][:photo_url]
+    @taco.photo = params[:taco][:photo]
     @taco.user = @current_user
 
     if @taco.save
@@ -40,7 +40,7 @@ class TacosController < ApplicationController
     @taco = Taco.find_by id: params[:id]
     @taco.name = params[:taco][:name]
     @taco.price = params[:taco][:price]
-    @taco.photo_url = params[:taco][:photo_url]
+    @taco.photo = params[:taco][:photo]
     if @taco.save
       redirect_to root_path, notice: "Taco Updated!"
     else
@@ -49,7 +49,7 @@ class TacosController < ApplicationController
 
   end
 
-  def delete
+  def destroy
     @taco = Taco.find_by id: params[:id]
     @taco.destroy
     redirect_to root_path, notice: "Taco Obliterated!"

@@ -13,6 +13,9 @@ gem "minitest-rails"
 gem 'bcrypt'
 gem 'bootstrap-sass'
 gem "acts_as_follower"
+gem "refile", require: "refile/rails"
+gem 'refile-postgres', '~> 1.4'
+gem "refile-mini_magick"
 
 group :development, :test do
   gem 'byebug'
