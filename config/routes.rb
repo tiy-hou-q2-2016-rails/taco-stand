@@ -30,4 +30,6 @@ Rails.application.routes.draw do
   delete 'api/tacos/:id' => 'api/tacos#delete'
 
   get 'map' => 'map#show', as: :map
+  get 'map/google' => 'map#google', as: :google_map
+  get 'map/leaflet' => 'map#leaflet', as: :leaflet_map
 end

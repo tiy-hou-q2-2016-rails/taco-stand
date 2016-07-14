@@ -1,0 +1,48 @@
+<div class="page-header">
+  <h1>Map <small>of the tacos</small></h1>
+</div>
+
+<ul>
+  <li><%= link_to 'View Google Version', google_map_path %></li>
+  <li><%= link_to 'View Leaflet Version', leaflet_map_path %></li>
+</ul>
+
+<div id="map"></div>
+
+<script>
+    var map;
+    function initMap() {
+
+      var myLatLng = {lat: 29.7, lng: -95.3};
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: myLatLng,
+        zoom: 10
+      });
+
+    var image = '<%= image_url("taco.png") %>';
+
+    <% @markers.each do |marker| %>
+      var marker<%= marker.id %> = new google.maps.Marker({
+         position: {lat: <%= marker.lat %>, lng: <%= marker.lng %>},
+         map: map,
+         icon: image
+       });
+
+       var infowindow<%= marker.id %> = new google.maps.InfoWindow({
+        content: "<%= marker.title %>"
+        });
+
+       marker<%= marker.id %>.addListener('click', function() {
+        infowindow<%= marker.id %>.open(map, marker<%= marker.id %>);
+      });
+    <% end %>
+
+
+
+
+
+    }
+  </script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbFqSJewjQ_1SOVhvRQTnAcrKQw7eJVDA&callback=initMap"
+  async defer></script>

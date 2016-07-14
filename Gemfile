@@ -13,6 +13,7 @@ gem "minitest-rails"
 gem 'bcrypt'
 gem 'bootstrap-sass'
 gem "acts_as_follower"
+gem 'leaflet-rails'
 
 group :development, :test do
   gem 'byebug'
