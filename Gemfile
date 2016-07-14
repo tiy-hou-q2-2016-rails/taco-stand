@@ -14,6 +14,7 @@ gem 'bcrypt'
 gem 'bootstrap-sass'
 gem "acts_as_follower"
 gem 'leaflet-rails'
+gem 'http'
 
 group :development, :test do
   gem 'byebug'

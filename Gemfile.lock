@@ -65,10 +65,21 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
+    domain_name (0.5.20160615)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.7.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    http (2.0.2)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 1.0.1)
+      http_parser.rb (~> 0.6.0)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
+    http-form_data (1.0.1)
+    http_parser.rb (0.6.0)
     i18n (0.7.0)
     jbuilder (2.5.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -167,6 +178,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.2)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -184,6 +198,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   coffee-rails (~> 4.1.0)
+  http
   jbuilder (~> 2.0)
   jquery-rails
   launchy

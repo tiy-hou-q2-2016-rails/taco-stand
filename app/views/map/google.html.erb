@@ -29,7 +29,7 @@
        });
 
        var infowindow<%= marker.id %> = new google.maps.InfoWindow({
-        content: "<%= marker.title %>"
+        content: '<%= link_to marker.title, taco_path(id: marker.id) %>'
         });
 
        marker<%= marker.id %>.addListener('click', function() {

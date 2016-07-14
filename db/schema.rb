@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160630163740) do
+ActiveRecord::Schema.define(version: 20160714165009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,13 +29,76 @@ ActiveRecord::Schema.define(version: 20160630163740) do
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
 
+  create_table "menus", force: :cascade do |t|
+    t.string   "name"
+    t.string   "pdf_file_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "oauth_access_grants", force: :cascade do |t|
+    t.integer  "resource_owner_id", null: false
+    t.integer  "application_id",    null: false
+    t.string   "token",             null: false
+    t.integer  "expires_in",        null: false
+    t.text     "redirect_uri",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "revoked_at"
+    t.string   "scopes"
+  end
+
+  add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
+
+  create_table "oauth_access_tokens", force: :cascade do |t|
+    t.integer  "resource_owner_id"
+    t.integer  "application_id"
+    t.string   "token",             null: false
+    t.string   "refresh_token"
+    t.integer  "expires_in"
+    t.datetime "revoked_at"
+    t.datetime "created_at",        null: false
+    t.string   "scopes"
+  end
+
+  add_index "oauth_access_tokens", ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true, using: :btree
+  add_index "oauth_access_tokens", ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id", using: :btree
+  add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
+
+  create_table "oauth_applications", force: :cascade do |t|
+    t.string   "name",                      null: false
+    t.string   "uid",                       null: false
+    t.string   "secret",                    null: false
+    t.text     "redirect_uri",              null: false
+    t.string   "scopes",       default: "", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
+
+  create_table "refile_attachments", force: :cascade do |t|
+    t.integer  "oid",        null: false
+    t.string   "namespace",  null: false
+    t.datetime "created_at"
+  end
+
+  add_index "refile_attachments", ["namespace"], name: "index_refile_attachments_on_namespace", using: :btree
+  add_index "refile_attachments", ["oid"], name: "index_refile_attachments_on_oid", using: :btree
+
   create_table "tacos", force: :cascade do |t|
     t.string   "name"
     t.string   "photo_url"
     t.decimal  "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "user_id"
+    t.string   "latitude"
+    t.string   "longitude"
+    t.string   "address_line_1"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "country"
   end
 
   create_table "users", force: :cascade do |t|

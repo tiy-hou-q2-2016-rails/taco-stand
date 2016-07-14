@@ -13,9 +13,10 @@ class MapController < ApplicationController
 
 
   before_action do
-    @markers = []
-    @markers << Marker.new(1, 29.7, -95.3, "Houston")
-    @markers << Marker.new(2, 29.5, -95.0, "Unknown")
+    @markers = Taco.where("latitude != ?", "").all
+    # @markers = []
+    # @markers << Marker.new(1, 29.7, -95.3, "Houston")
+    # @markers << Marker.new(2, 29.5, -95.0, "Unknown")
   end
 
   def show

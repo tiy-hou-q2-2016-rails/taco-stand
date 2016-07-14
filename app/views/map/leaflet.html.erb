@@ -24,7 +24,7 @@
   })
 
   <% @markers.each do |marker| %>
-    L.marker([<%= marker.lat %>, <%= marker.lng %>], {icon: tacoIcon}).addTo(mymap).bindPopup("Marker: <%= marker.title %>");
+    L.marker([<%= marker.lat %>, <%= marker.lng %>], {icon: tacoIcon}).addTo(mymap).bindPopup('<%= link_to marker.title, taco_path(id: marker.id ) %>');
   <% end %>
 
 </script>
