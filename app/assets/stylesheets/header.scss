@@ -1,0 +1,25 @@
+header {
+  background: #2980b9;
+
+
+
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: space-between;
+  align-items: center;
+
+  a, span {
+    color: #fff;
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+
+    &:hover {
+      color: #2980b9;
+      background: #fff;
+    }
+  }
+
+}

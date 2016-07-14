@@ -29,4 +29,5 @@ Rails.application.routes.draw do
   post 'api/tacos' => 'api/tacos#create'
   delete 'api/tacos/:id' => 'api/tacos#delete'
 
+  get 'map' => 'map#show', as: :map
 end
