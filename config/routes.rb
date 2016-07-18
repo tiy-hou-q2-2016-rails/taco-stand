@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   root 'welcome#homepage'
 
   get 'tacos' => 'welcome#homepage', as: :tacos
@@ -8,6 +10,10 @@ Rails.application.routes.draw do
   get 'tacos/:id/edit' => 'tacos#edit', as: :edit_taco
   delete 'tacos/:id' => 'tacos#delete'
   patch 'tacos/:id' => 'tacos#update'
+
+  get 'tacos/:taco_id/sharing/new' => 'sharing#new', as: :new_share
+  post 'tacos/:taco_id/sharing' => 'sharing#create', as: :create_share
+
 
   get 'sign_in' => 'sessions#new', as: :sign_in
   post 'sign_in' => 'sessions#create'
