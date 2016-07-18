@@ -4,7 +4,7 @@
 </p>
 
 <p>
-  View this taco at <%= link_to @taco.name, taco_path(id: @taco.id) %>
+  View this taco at <%= link_to @taco.name, taco_url(id: @taco.id) %>
 </p>
 
 <%= image_tag(@taco.photo_url) %>
