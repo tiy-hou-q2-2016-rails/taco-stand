@@ -12,10 +12,12 @@
     <dd><%= @taco.user.username %></dd>
   </div>
   <div class="col-xs-4">
-    <%= link_to "Update Taco", edit_taco_path(id: @taco.id), class: 'btn btn-default' %>
 
-    <%= link_to "Delete Taco", taco_path(id: @taco.id), method: :delete, class: "btn btn-danger" %>
+    <% if @taco.user == @current_user %>
+      <%= link_to "Update Taco", edit_taco_path(id: @taco.id), class: 'btn btn-default' %>
 
+      <%= link_to "Delete Taco", taco_path(id: @taco.id), method: :delete, class: "btn btn-danger" %>
+    <% end %>
 
     <%= link_to new_share_path(taco_id: @taco.id), class: "btn btn-success" do %>
       <i class="glyphicon glyphicon-envelope"></i> Share Taco

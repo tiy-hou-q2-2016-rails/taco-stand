@@ -33,11 +33,11 @@ class TacosController < ApplicationController
   end
 
   def edit
-    @taco = Taco.find_by id: params[:id]
+    @taco = @current_user.tacos.find_by! id: params[:id]
   end
 
   def update
-    @taco = Taco.find_by id: params[:id]
+    @taco = @current_user.tacos.find_by! id: params[:id]
     @taco.name = params[:taco][:name]
     @taco.price = params[:taco][:price]
     @taco.photo_url = params[:taco][:photo_url]
@@ -50,7 +50,7 @@ class TacosController < ApplicationController
   end
 
   def delete
-    @taco = Taco.find_by id: params[:id]
+    @taco = @current_user.tacos.find_by! id: params[:id]
     @taco.destroy
     redirect_to root_path, notice: "Taco Obliterated!"
   end
