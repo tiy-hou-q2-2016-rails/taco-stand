@@ -14,6 +14,10 @@ gem 'bcrypt'
 gem 'bootstrap-sass'
 gem "acts_as_follower"
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development, :test do
   gem 'byebug'
 end
