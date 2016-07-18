@@ -3,9 +3,9 @@ require "test_helper"
 class FollowTest < Capybara::Rails::TestCase
 
   setup do
-    @jwo = User.create! username: "jwo", password: "12345678"
-    @bob = User.create! username: "bob", password: "12345678"
-    @sarah = User.create! username: "sarah", password: "12345678"
+    @jwo = User.create! email: "jwo@example.com", username: "jwo", password: "12345678"
+    @bob = User.create! email: "bob@example.com", username: "bob", password: "12345678"
+    @sarah = User.create! email: "sarah@example.com", username: "sarah", password: "12345678"
   end
 
   test "jwo can see tacos of people he follow" do

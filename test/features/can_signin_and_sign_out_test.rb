@@ -3,10 +3,10 @@ require "test_helper"
 class CanSigninAndSignOutTest < Capybara::Rails::TestCase
 
   setup do
+    User.create! email: "example@example.com", username: "example", password: "12345678"
   end
 
   test "Can Sign Out" do
-    user = User.create! username: "example", password: "12345678"
 
     visit root_path
     click_link "New Taco"
@@ -21,7 +21,6 @@ class CanSigninAndSignOutTest < Capybara::Rails::TestCase
   end
 
   test "Validates Password" do
-    user = User.create! username: "example", password: "12345678"
     visit root_path
     click_link "New Taco"
     # I am on sign in page
@@ -33,8 +32,22 @@ class CanSigninAndSignOutTest < Capybara::Rails::TestCase
 
   end
 
+  test "Can Sign Up" do
+    visit root_path
+    click_link "New Taco"
+    # I am on sign in page
+    click_link "Sign Up"
+    fill_in "Email", with: 'jwo@example.com'
+    fill_in "Username", with: 'jwo'
+    fill_in "Password", with: "12345678"
+    fill_in "Password confirmation", with: "12345678"
+    click_button "Sign Up"
+
+    assert_content page, "Welcome!"
+
+  end
+
   test "Can Sign In" do
-    user = User.create! username: "example", password: "12345678"
     visit root_path
     click_link "New Taco"
     # I am on sign in page
