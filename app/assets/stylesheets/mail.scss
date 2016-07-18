@@ -1,0 +1,16 @@
+.email-wrapper {
+  background: #34495e;
+  font-size: 16px;
+}
+.email-body {
+  margin: 1em;
+  padding: 1em;
+  border: 2px solid darken(#34495e, 20%);
+  background-color: #ecf0f1 !important;
+  h1 {
+    text-align: center;
+    border-bottom: 1px solid darken(#34495e, 20%);
+
+
+  }
+}

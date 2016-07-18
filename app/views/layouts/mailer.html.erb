@@ -1,5 +1,10 @@
 <html>
   <body>
-    <%= yield %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <div class="email-wrapper">
+      <div class="email-body">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

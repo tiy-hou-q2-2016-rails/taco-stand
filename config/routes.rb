@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   root 'welcome#homepage'
 
   get 'tacos' => 'welcome#homepage', as: :tacos
@@ -21,6 +22,12 @@ Rails.application.routes.draw do
 
   get 'registration' => 'users#new', as: :new_user
   post 'registration' => 'users#create', as: :create_user
+
+  get 'passwords/new' => 'passwords#new', as: :new_password
+  post 'passwords' => 'passwords#create', as: :create_password
+  get 'passwords/reset/:token' => 'passwords#reset', as: :reset_password
+  patch 'passwords/reset/:token' => 'passwords#update'
+
 
   get 'users' => 'users#index', as: :users
   get 'entourage' => 'users#following', as: :following

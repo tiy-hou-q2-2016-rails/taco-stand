@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h1>Forgot Your Password? <small>It's ok. I forget stuff too</small></h1>
+</div>
+
+<p>
+  We'll send you a link to create a new password to your email address on file.
+</p>
+
+<%= form_tag create_password_path do %>
+
+  <div class="form-group">
+    <%= label_tag :email %>
+    <%= email_field_tag :email, "", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= submit_tag "Reset Your Password", class: "btn btn-lg btn-primary" %>
+  </div>
+<% end %>
