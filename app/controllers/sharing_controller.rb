@@ -8,7 +8,7 @@ class SharingController < ApplicationController
     email = params[:email]
 
     if email.present?
-      ### send the email
+      ShareMailer.share_taco(email, @taco).deliver_now
       render :new
     else
       flash.now[:alert] = "Please enter a valid email"
