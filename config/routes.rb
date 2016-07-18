@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get 'tacos/:taco_id/sharing/new' => 'sharing#new', as: :new_share
   post 'tacos/:taco_id/sharing' => 'sharing#create', as: :create_share
-
+  get 'sharing/thanks' => 'sharing#thanks', as: :thanks_for_sharing
 
   get 'sign_in' => 'sessions#new', as: :sign_in
   post 'sign_in' => 'sessions#create'

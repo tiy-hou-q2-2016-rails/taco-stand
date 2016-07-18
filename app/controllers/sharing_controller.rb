@@ -9,10 +9,13 @@ class SharingController < ApplicationController
 
     if email.present?
       ShareMailer.share_taco(email, @taco).deliver_now
-      render :new
+      redirect_to thanks_for_sharing_path, notice: "Thanks for sharing!"
     else
       flash.now[:alert] = "Please enter a valid email"
       render :new
     end
+  end
+
+  def thanks
   end
 end
