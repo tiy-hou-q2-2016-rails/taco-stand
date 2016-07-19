@@ -1,0 +1,12 @@
+<h1>Daily Taco Report: <%= Date.today %></h1>
+
+<p>
+  <strong>Number of Tacos: <%= pluralize(@tacos.count, 'taco') %></strong>
+</p>
+
+<h4>Taco List:</h4>
+<ul>
+  <% @tacos.each do |taco| %>
+    <li><%= taco.name %></li>
+  <% end %>
+</ul>
