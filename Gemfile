@@ -14,6 +14,7 @@ gem 'bcrypt'
 gem 'bootstrap-sass'
 gem "acts_as_follower"
 gem 'premailer-rails'
+gem 'stripe'
 
 group :production do
   gem 'rails_12factor'

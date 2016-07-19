@@ -5,7 +5,10 @@
 <div class="row">
   <div class="col-xs-4">
     <dt>Price</dt>
-    <dd><%= number_to_currency @taco.price %></dd>
+    <dd>
+      <%= number_to_currency @taco.price %>
+      <%= link_to 'Buy This Taco', new_charge_path(taco_id: @taco.id) %>
+    </dd>
   </div>
   <div class="col-xs-4">
     <dt>User</dt>

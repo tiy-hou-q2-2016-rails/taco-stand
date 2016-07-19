@@ -7,7 +7,7 @@ class TacosController < ApplicationController
   end
 
   def feed
-    @tacos = @current_user.timeline
+    @tacos = Taco.timeline_for_user(@current_user)
   end
 
   def show

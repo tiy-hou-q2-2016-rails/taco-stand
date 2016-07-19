@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-
   root 'welcome#homepage'
 
   get 'tacos' => 'welcome#homepage', as: :tacos
@@ -36,6 +35,8 @@ Rails.application.routes.draw do
 
   get 'feed' => 'tacos#feed', as: :feed
 
+  get 'tacos/:taco_id/charges/new' => 'charges#new', as: :new_charge
+  post 'tacos/:taco_id/charges' => 'charges#create', as: :process_charge
 
   get 'api/tacos' => 'api/tacos#index', as: :api_tacos
   get 'api/tacos/:id' => 'api/tacos#show', as: :api_taco

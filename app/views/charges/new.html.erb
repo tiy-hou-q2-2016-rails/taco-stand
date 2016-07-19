@@ -1,0 +1,55 @@
+<h1>Buy This Taco!</h1>
+
+<p>
+  Taco Name: <strong><%= @taco.name %></strong>
+</p>
+
+<p>
+  Taco Price: <strong><%= number_to_currency @taco.price %></strong>
+</p>
+
+<div class="row">
+
+    <div class="col-xs-12 col-md-6 col-md-offset-3 well">
+      <%= form_tag process_charge_path(taco_id: @taco.id) do  %>
+        <div class="form-group">
+          <%= label_tag :name, "Your Name" %>
+          <%= text_field_tag :name, params[:name], class: "form-control", required: true  %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :credit_card %>
+          <%= number_field_tag :credit_card, "", class: "form-control", required: true  %>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <%= label_tag :credit_card_expiration_month, "Expiration Month" %>
+              <%= select_tag :credit_card_expiration_month, options_for_select((1..12).to_a), prompt: "Please Select a Month", class: "form-control"  %>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <%= label_tag :credit_card_expiration_year, "Expiration Year" %>
+              <%= select_tag :credit_card_expiration_year, options_for_select((Date.today.year .. Date.today.year + 15).to_a), prompt: "Please Select a Year", class: "form-control"    %>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <%= label_tag :credit_card_cvc, "Verification (CVC)" %>
+              <%= number_field_tag :credit_card_cvc, "", class: "form-control"    %>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+          <%= submit_tag "Charge This Card!!!", class: "btn btn-success btn-lg" %>
+        </div>
+
+      <% end %>
+    </div>
+</div>
