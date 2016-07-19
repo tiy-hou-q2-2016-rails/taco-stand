@@ -1,4 +1,4 @@
-<h1>Daily Taco Report: <%= Date.today %></h1>
+<h1>Daily Taco Report: <%= Date.today.strftime("%b %d, %Y") %></h1>
 
 <p>
   <strong>Number of Tacos: <%= pluralize(@tacos.count, 'taco') %></strong>
