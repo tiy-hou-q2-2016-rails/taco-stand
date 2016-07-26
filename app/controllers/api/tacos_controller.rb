@@ -33,6 +33,18 @@ class Api::TacosController < ApplicationController
     end
   end
 
+  def update
+    @taco = Taco.find_by id: params[:id]
+    @taco.name = params[:taco][:name]
+    @taco.price = params[:taco][:price]
+    @taco.photo_url = params[:taco][:photo_url]
+    if @taco.save
+      render :show, status: 200 #created
+    else
+      render json: {errors: @taco.errors}, status: 422 #error
+    end
+  end
+
   def delete
     @taco = Taco.find_by id: params[:id]
     @taco.destroy

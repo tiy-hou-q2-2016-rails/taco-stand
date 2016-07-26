@@ -41,6 +41,8 @@ Rails.application.routes.draw do
   get 'api/tacos' => 'api/tacos#index', as: :api_tacos
   get 'api/tacos/:id' => 'api/tacos#show', as: :api_taco
   post 'api/tacos' => 'api/tacos#create'
+  patch 'api/tacos/:id' => 'api/tacos#update'
+  put 'api/tacos/:id' => 'api/tacos#update'
   delete 'api/tacos/:id' => 'api/tacos#delete'
 
 end
