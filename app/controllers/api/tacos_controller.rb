@@ -35,10 +35,7 @@ class Api::TacosController < ApplicationController
 
   def update
     @taco = Taco.find_by id: params[:id]
-    @taco.name = params[:taco][:name]
-    @taco.price = params[:taco][:price]
-    @taco.photo_url = params[:taco][:photo_url]
-    if @taco.save
+    if @taco.update params.require(:taco).permit(:name, :price, :photo_url)
       render :show, status: 200 #created
     else
       render json: {errors: @taco.errors}, status: 422 #error
